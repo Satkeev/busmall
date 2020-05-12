@@ -114,8 +114,8 @@ function manageClick(event){
     renderTable();
 
     // add all productVote array values to local storage after vote is complete
-    localStorage.setItem('totalProductVotes',JSON.stringify(productVotes));
-    localStorage.setItem('totalProductShowns',JSON.stringify(productShown));
+    // localStorage.setItem('totalProductVotes',JSON.stringify(productVotes));
+    // localStorage.setItem('totalProductShowns',JSON.stringify(productShown));
 
   } else {
 
