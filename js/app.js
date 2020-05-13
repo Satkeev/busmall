@@ -236,41 +236,41 @@ function renderTable(){
   sectionElement2.appendChild(productTable);
 }
 
-function makeHeaderRow(){
+// function makeHeaderRow(){
 
-  //create title above table on function invocation
-  var sectionElement = document.getElementById('table');
-  var titleElement = document.createElement('h2');
-  titleElement.textContent = 'Full data per product with preference rate';
-  sectionElement.appendChild(titleElement);
+//   //create title above table on function invocation
+//   var sectionElement = document.getElementById('table');
+//   var titleElement = document.createElement('h2');
+//   titleElement.textContent = 'Full data per product with preference rate';
+//   sectionElement.appendChild(titleElement);
 
-  //header for table of results about product votes
-  var productName = document.createElement ('td');
-  var tableRowElement = document.createElement('tr');
+//   //header for table of results about product votes
+//   var productName = document.createElement ('td');
+//   var tableRowElement = document.createElement('tr');
 
-  productName.textContent = 'Product';
-  tableRowElement.appendChild(productName);
+//   productName.textContent = 'Product';
+//   tableRowElement.appendChild(productName);
 
-  productTable.appendChild(tableRowElement);
+//   productTable.appendChild(tableRowElement);
 
-  var timesVoted = document.createElement ('td');
-  timesVoted.textContent = '# Votes';
-  tableRowElement.appendChild(timesVoted);
+//   var timesVoted = document.createElement ('td');
+//   timesVoted.textContent = '# Votes';
+//   tableRowElement.appendChild(timesVoted);
 
-  productTable.appendChild(tableRowElement);
+//   productTable.appendChild(tableRowElement);
 
-  var timesShown = document.createElement ('td');
-  timesShown.textContent = '# Times Shown';
-  tableRowElement.appendChild(timesShown);
+//   var timesShown = document.createElement ('td');
+//   timesShown.textContent = '# Times Shown';
+//   tableRowElement.appendChild(timesShown);
 
-  productTable.appendChild(tableRowElement);
+//   productTable.appendChild(tableRowElement);
 
-  var preferenceRate = document.createElement ('td');
-  preferenceRate.textContent = 'Preference Rate %';
-  tableRowElement.appendChild(preferenceRate);
+//   var preferenceRate = document.createElement ('td');
+//   preferenceRate.textContent = 'Preference Rate %';
+//   tableRowElement.appendChild(preferenceRate);
 
-  productTable.appendChild(tableRowElement);
-}
+//   productTable.appendChild(tableRowElement);
+// }
 
 //create instances of each product (can store in variables but not doing in demo)
 new ProductImages('bag','img/bag.jpg');
