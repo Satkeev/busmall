@@ -112,10 +112,20 @@ function manageClick(event){
     renderChart();
     makeHeaderRow();
     renderTable();
+  
+    //add all productVote array values to local storage after vote is complete
+   localStorage.setItem('totalProductVotes',JSON.stringify(productVotes));
+   localStorage.setItem('totalProductShowns',JSON.stringify(productShown));
 
-    // add all productVote array values to local storage after vote is complete
-    // localStorage.setItem('totalProductVotes',JSON.stringify(productVotes));
-    // localStorage.setItem('totalProductShowns',JSON.stringify(productShown));
+    
+   // add all productVote array values to local storage after vote is complete
+
+   
+   localStorage.setItem('allProducts',JSON.stringify(allProducts));
+
+   
+  
+
 
   } else {
 
@@ -186,91 +196,92 @@ function renderChart(){
 }
 
 
-//Bring back table to show product results including percentage click/show for research team
-//create the table market research has request that shows # of votes, # times shown and % of votes/shown for each product
+// Bring back table to show product results including percentage click/show for research team
+// create the table market research has request that shows # of votes, # times shown and % of votes/shown for each product
 
 function renderTable(){
 
-  //establish table content rows and cells (data cells)
-  var tableRowElement, tableDataElement;
-  var votes = productVotes;
-  var shown = productShown;
-
-  //create row for each product that has data cells for votes, times shown and % click rate
-  for(var i = 0; i < productNames.length; i++){
-    tableRowElement = document.createElement('tr');
-
-    tableDataElement = document.createElement('td');
-    tableDataElement.textContent = productNames[i];
-    tableRowElement.appendChild(tableDataElement);
+      //establish table content rows and cells (data cells)
+      var tableRowElement, tableDataElement;
+      var votes = productVotes;
+      var shown = productShown;
     
-
-    tableDataElement = document.createElement('td');
-    tableDataElement.textContent = votes[i];
-    tableRowElement.appendChild(tableDataElement);
-  
-
-    tableDataElement = document.createElement('td');
-    tableDataElement.textContent = shown[i];
-    tableRowElement.appendChild(tableDataElement);
-  
-
-    if(productShown[i] > 0){
-
-      //calculate preference rate by dividing the number of times an item is clicked by the number of times the item is shown/displayed
+      //create row for each product that has data cells for votes, times shown and % click rate
+      for(var i = 0; i < productNames.length; i++){
+        tableRowElement = document.createElement('tr');
+    
+        tableDataElement = document.createElement('td');
+        tableDataElement.textContent = productNames[i];
+        tableRowElement.appendChild(tableDataElement);
+        
+    
+        tableDataElement = document.createElement('td');
+        tableDataElement.textContent = votes[i];
+        tableRowElement.appendChild(tableDataElement);
       
-      var voteRate = Math.round(100 * (votes[i] / shown[i]) );
-      tableDataElement = document.createElement('td');
-      tableDataElement.textContent = voteRate + ' %';
-      tableRowElement.appendChild(tableDataElement);
-
-    } else{
-
-      tableDataElement = document.createElement('td');
-      tableDataElement.textContent = 'N/A';
-      tableRowElement.appendChild(tableDataElement);
-
+    
+        tableDataElement = document.createElement('td');
+        tableDataElement.textContent = shown[i];
+        tableRowElement.appendChild(tableDataElement);
+      
+    
+        if(productShown[i] > 0){
+    
+          //calculate preference rate by dividing the number of times an item is clicked by the number of times the item is shown/displayed
+          
+          var voteRate = Math.round(100 * (votes[i] / shown[i]) );
+          tableDataElement = document.createElement('td');
+          tableDataElement.textContent = voteRate + ' %';
+          tableRowElement.appendChild(tableDataElement);
+    
+        } else{
+    
+          tableDataElement = document.createElement('td');
+          tableDataElement.textContent = 'N/A';
+          tableRowElement.appendChild(tableDataElement);
+    
+        }
+        productTable.appendChild(tableRowElement);
+      }
+      sectionElement2.appendChild(productTable);
     }
-    productTable.appendChild(tableRowElement);
-  }
-  sectionElement2.appendChild(productTable);
-}
-
-// function makeHeaderRow(){
-
-//   //create title above table on function invocation
-//   var sectionElement = document.getElementById('table');
-//   var titleElement = document.createElement('h2');
-//   titleElement.textContent = 'Full data per product with preference rate';
-//   sectionElement.appendChild(titleElement);
-
-//   //header for table of results about product votes
-//   var productName = document.createElement ('td');
-//   var tableRowElement = document.createElement('tr');
-
-//   productName.textContent = 'Product';
-//   tableRowElement.appendChild(productName);
-
-//   productTable.appendChild(tableRowElement);
-
-//   var timesVoted = document.createElement ('td');
-//   timesVoted.textContent = '# Votes';
-//   tableRowElement.appendChild(timesVoted);
-
-//   productTable.appendChild(tableRowElement);
-
-//   var timesShown = document.createElement ('td');
-//   timesShown.textContent = '# Times Shown';
-//   tableRowElement.appendChild(timesShown);
-
-//   productTable.appendChild(tableRowElement);
-
-//   var preferenceRate = document.createElement ('td');
-//   preferenceRate.textContent = 'Preference Rate %';
-//   tableRowElement.appendChild(preferenceRate);
-
-//   productTable.appendChild(tableRowElement);
-// }
+    
+     function makeHeaderRow(){
+    
+      //create title above table on function invocation
+      var sectionElement = document.getElementById('table');
+      var titleElement = document.createElement('h2');
+      titleElement.textContent = 'Full data per product with preference rate';
+      sectionElement.appendChild(titleElement);
+    
+      //header for table of results about product votes
+      var productName = document.createElement ('td');
+      var tableRowElement = document.createElement('tr');
+    
+      productName.textContent = 'Product';
+      tableRowElement.appendChild(productName);
+    
+      productTable.appendChild(tableRowElement);
+    
+      var timesVoted = document.createElement ('td');
+      timesVoted.textContent = '# Votes';
+      tableRowElement.appendChild(timesVoted);
+    
+      productTable.appendChild(tableRowElement);
+    
+      var timesShown = document.createElement ('td');
+      timesShown.textContent = '# Times Shown';
+      tableRowElement.appendChild(timesShown);
+    
+      productTable.appendChild(tableRowElement);
+    
+      var preferenceRate = document.createElement ('td');
+      preferenceRate.textContent = 'Preference Rate %';
+      tableRowElement.appendChild(preferenceRate);
+    
+      productTable.appendChild(tableRowElement);
+    }
+    
 
 //create instances of each product (can store in variables but not doing in demo)
 new ProductImages('bag','img/bag.jpg');
@@ -294,7 +305,7 @@ new ProductImages('usb', 'img/usb.gif');
 new ProductImages('water-can', 'img/water-can.jpg');
 new ProductImages('wine-glass', 'img/wine-glass.jpg');
 
-//reset the productVote array start values to the final tally of this round of voting from the local storage
+// reset the productVote array start values to the final tally of this round of voting from the local storage
 if(localStorage.totalProductShowns){
   productVotes = JSON.parse(localStorage.getItem('totalProductVotes'));
   productShown = JSON.parse(localStorage.getItem('totalProductShowns'));
@@ -302,8 +313,33 @@ if(localStorage.totalProductShowns){
 //create event listener for clicks on images
 sectionElement.addEventListener('click', manageClick);
 
-// //create event listener for click on refresh page button; DIDN'T WORK
-// refreshPage.addEventListener('click',location.reload);
-
 //render the three images on the page load
 randomProductGen();
+
+function sampleFunction() {
+  location.reload();
+}
+localStorage.getItem('allProducts');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
